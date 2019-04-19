@@ -7,10 +7,6 @@ require("dotenv").config();
 
 var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
-// var spotify = new Spotify({
-//     id: "4bd1c135cdc3491383776bbe7040c2fc",
-//     secret: "c5e57c9127ee438bac920c069b67a50b"
-// });
 
 var action = process.argv[2];
 var value = process.argv[3];
