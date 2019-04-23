@@ -9,8 +9,22 @@ var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
 
 var info = process.argv;
-var action = process.argv[2];
-var value = process.argv[3];
+var action = info[2];
+var value = info[3];
+
+//--------------------------------------
+
+var queryName = "";
+    
+for (var i = 3; i < info.length; i++) {
+    if (i > 3 && i < info.length) {
+        queryName = queryName + " " + info[i];
+}
+else {
+    queryName += info[i];
+}}
+
+console.log(queryName);
 
 //--------------------------------------
 
@@ -36,21 +50,7 @@ case "do-what-it-says":
 
 function concert() {
 
-    // var nodeArgs = process.argv;
-    var artistName = "";
-    
-    for (var i = 3; i < info.length; i++) {
-        if (i > 3 && i < info.length) {
-            artistName = artistName + "+" + info[i];
-    }
-    else {
-        artistName += info[i];
-    }}
-
-    console.log(artistName);
-
-    var queryUrl = "https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=codingbootcamp";
-
+    var queryUrl = "https://rest.bandsintown.com/artists/" + queryName + "/events?app_id=codingbootcamp";
     // console.log(queryUrl);
 
     axios.get(queryUrl).then(
@@ -64,7 +64,6 @@ function concert() {
             
             var showDate = moment(date).format("MM/DD/YYYY");
             console.log("Date: " + showDate);
-
     });
 }
 
@@ -72,27 +71,7 @@ function concert() {
 
 function song() {
 
-    // var nodeSongs = process.argv;
-    var songName = "";
-
-    if (info.length > 3) {
-    
-    for (var i = 3; i < info.length; i++) {
-        if (i > 3 && i < info.length) {
-        songName = songName + "+" + info[i];
-    }
-    else {
-        songName += info[i];
-        }
-    }}
-
-    else {
-        songName = "The Sign";
-    }
-
-    console.log(songName);
-
-    spotify.search({ type: 'track', query: songName }, function(err, data) {
+    spotify.search({ type: 'track', query: queryName }, function(err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
@@ -108,25 +87,7 @@ function song() {
 
 function movie() {
 
-    var nodeMovies = process.argv;
-    var movieName = "";
-    
-    if (nodeMovies.length > 3) {
-        
-    for (var i = 3; i < nodeMovies.length; i++) {
-        if (i > 3 && i < nodeMovies.length) {
-        movieName = movieName + "+" + nodeMovies[i];
-        }
-        else {
-        movieName += nodeMovies[i];
-        }
-    }}
-
-    else {
-        movieName = "Mr. Nobody";
-    }
-
-var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+var queryUrl = "http://www.omdbapi.com/?t=" + queryName + "&y=&plot=short&apikey=trilogy";
 
 console.log(queryUrl);
 
@@ -141,7 +102,7 @@ axios.get(queryUrl)
         console.log("Language: " + response.data.Language);
         console.log("Plot: " + response.data.Plot);
         console.log("Cast: " + response.data.Actors);
-});
+    });
 }
 
 //--------------------------------------
@@ -151,11 +112,26 @@ function doWhat() {
         if (error) {
             return console.log(error);
         }
-        console.log(data);
-        console.log(data.split(","));
+        // console.log(data);
+        // console.log(data.split(","));
         var commandArray = data.split(",");
+        info = commandArray;
+        action = commandArray[0];
+        queryName = commandArray[1];
+
         console.log(commandArray[0]);
+        console.log(commandArray[1]);
 
-
+        if (action == "concert-this") {
+            concert();
+        }
+        if (action == "spotify-this-song") {
+            song();
+        }
+        if (action == "movie-this") {
+            movie();
+        }
     });
 }
+
+//--------------------------------------
