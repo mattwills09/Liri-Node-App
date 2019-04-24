@@ -18,7 +18,7 @@ var queryName = "";
     
 for (var i = 3; i < info.length; i++) {
     if (i > 3 && i < info.length) {
-        queryName = queryName + " " + info[i];
+        queryName = queryName + "+" + info[i];
 }
 else {
     queryName += info[i];
