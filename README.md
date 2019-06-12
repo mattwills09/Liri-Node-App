@@ -1,4 +1,4 @@
-# liri-node-app
+# Liri-Node-Terminal-App
 
 For this assignment we were asked to create a language interpreting and recognition interface, or LIRI, that users could input a simple command to the terminal, along with a desired band/artist, song, or movie, and be given detailed and updated information specific to that search that they can use for the future.  Included searches are an artists' next show and location provided by Bands In Town, a movie's release date, ratings, cast and plot for any movie provided by OMDb, and any song's band name, album, and preview link for the song provided by spotify.
 
