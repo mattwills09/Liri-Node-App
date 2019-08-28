@@ -1,4 +1,4 @@
-# Liri-Node-Terminal-App
+# Liri (aka Language Interpreting and Recognition Interface) Node Terminal App
 
 In this project we were asked to create a language interpreting and recognition interface, or LIRI, that users could use to input a simple command to the terminal, along with some further search criteria, and be given clear and updated information for that artist or movie or whatever the user would be searching for.  The user is able to search for an artist/band, song, or movie, and then using API calls, be given either show locations and times for a band's next show using the Bands In Town API, or the rating, cast and synopsis for any movie through OMDb's API, or lastly through Spotify's API, search by any song name to find that release year, album, etc.
 
