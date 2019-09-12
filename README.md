@@ -11,11 +11,12 @@ To run the LIRI Node Application after cloning the repository, run 'npm install'
 -  Do What It Says:  $ node liri.js do-what-it-says  (runs a preselected code that is in the random.txt file)
   
 Throughout this project, the aspects that I found to go smoothy was finding, downloading and implementing the API keys, calling the query URLs, and setting variables to be used for the functions.  The bugs that I had encountered with this project was after writing the function code for the 'concert', 'song', and 'movie', and then figuring out how the code for those would be added to the 'doWhat' function.  Not wanting to copy and paste long lines of code over again, I worked with two associates to end up writing one 'querySearch' that can be added in each function (to shorten each), and then be able to call those functions in the 'doWhat' function without having to add excess code.  After that edit was made to the liri.js file, the project became much easier to understand through the code, and also with implementing each function.  In the future, the ability for all the information found through each search will be appended to a txt file for the users' records.
+
+---
   
 * Using the API keys, and requiring FS, Axios, Spotify and moment - and installing those node-modules through the terminal window - the user is able to use the correct query URL's to call upon their servers when the required code is entered.  Variables were also created for the process.argv string to be used in each function, for each Concert, Song, Movie, and a function named 'doWhat' that will take the entered string - separate it as the 'action' and 'value', and then run the correct search for the information.  There were also default values set for the 'movie' and 'song' searches as well when no term is used for the search.  Screenshots for each of those will be provided below:
 
-
-## Acknowledgments
+---
 
 ![BandsInTown - 'concert-this' Request](images/Liri-ConcertThis.jpg)
 ![concert-this - Code](images/Liri-ConcertThis-Code.jpg)
@@ -24,6 +25,8 @@ Throughout this project, the aspects that I found to go smoothy was finding, dow
 ![do-what-it-says Song Requests](images/Liri-doWhat-song.jpg)
 ![do-what-it-says Movie Requests](images/Liri-doWhat-movie.jpg)
 ![do-what-it-says Concert Requests](images/Liri-doWhat-concert.jpg)
+
+___
 
 ## Built With
 
